@@ -9,18 +9,18 @@ function TaskList({ currentDate }) {
   }, [currentDate]);
 
   const fetchTasks = async () => {
-    const res = await axios.get('http://localhost:5000/api/tasks');
+    const res = await axios.get('https://daily-routine-ftg2.onrender.com/api/tasks');
     const todayTasks = res.data.filter((task) => task.date === currentDate.toISOString().split('T')[0]);
     setTasks(todayTasks);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`https://daily-routine-ftg2.onrender.com/api/tasks/${id}`);
     fetchTasks();
   };
 
   const handleToggleComplete = async (id, completed) => {
-    await axios.put(`http://localhost:5000/api/tasks/${id}`, { completed: !completed });
+    await axios.put(`https://daily-routine-ftg2.onrender.com/api/tasks/${id}`, { completed: !completed });
     fetchTasks();
   };
 
